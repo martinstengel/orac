@@ -139,6 +139,9 @@
 ! 2017/09/14, GM: In ML cases postfix both the upper and lower layer LUT class
 !    names separated by an underscore.
 ! 2017/10/04, GM: Add the option to use ANN phase to select pixels to process.
+! 2017/12/07, MST: the lower limit of tskin was set to 250.K which was too high
+!     in particular for Greenland and Antartica. Have set it to 200.0K.
+!     Comparisons of lw fluxes to CERES confirm that this was necessary.
 !
 ! $Id$
 !
@@ -560,7 +563,7 @@ subroutine Read_Driver(Ctrl, global_atts, source_atts)
    Ctrl%Invpar%XLLim(IRe2)            = switch_cls(c2,Default=0.1)
    Ctrl%Invpar%XLLim(IPc2)            = switch_cls(c2,Default=10.0)
    Ctrl%Invpar%XLLim(IFr2)            = switch_cls(c2,Default=0.0)
-   Ctrl%Invpar%XLLim(ITs)             = switch_app(a, Default=250.0)
+   Ctrl%Invpar%XLLim(ITs)             = switch_app(a, Default=200.) 
    Ctrl%Invpar%XLLim(IRs(:,IRho_0V))  = switch_app(a, Default=0.00001, Cld=0.)
    Ctrl%Invpar%XLLim(IRs(:,IRho_0D))  = switch_app(a, Default=0.00001, Cld=0.)
    Ctrl%Invpar%XLLim(IRs(:,IRho_DV))  = switch_app(a, Default=0.00001, Cld=0.)
