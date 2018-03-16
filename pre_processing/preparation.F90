@@ -81,7 +81,6 @@
 !    version of code by CP).
 ! 2016/07/31, GM: Tidying of the code drop above.
 ! 2017/04/11, SP: Added ecmwf_flag=6, for working with GFS analysis files.
-! 2017/12/11, MST: commenting first two parts of the file_base construction since this was inconsistent with the construction of the same in the main processing
 !
 ! $Id$
 !
@@ -205,8 +204,8 @@ subroutine preparation(lwrtm_file,swrtm_file,prtm_file,config_file,msi_file, &
    ! ESACCI-L2-CLOUD-CLD-${sensor}_${product_string}_${platform}_*${YYYY}${MM}${DD}${HH}${II}_${version2}.*.nc
 
    ! put basic filename together
-   file_base = & !trim(adjustl(global_atts%project))// &
-             !'-L2-CLOUD-CLD-'// &
+   file_base=trim(adjustl(global_atts%project))// &
+             '-L2-CLOUD-CLD-'// &
              trim(adjustl(sensor))//'_'// &
              trim(adjustl(global_atts%l2_processor))//'_'// &
              trim(adjustl(platform))//'_'// &
